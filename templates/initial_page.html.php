@@ -28,12 +28,14 @@
         <div class="col-md-6 offset-md-3">
         <div class="card">
             <div class="card-body">
+           
+
             
-            <button class="btn btn-primary w-100 mb-3" id="signIn">
+            <button class="btn btn-primary w-100 mb-3" id="signIn" >
                 Sign In
             </button>
             
-            <button class="btn btn-secondary w-100" id="signUp">
+            <button class="btn btn-secondary w-100" id="signUp" >
                 Sign Up  
             </button>
             

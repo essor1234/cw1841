@@ -31,10 +31,12 @@
                 <tr class="table-striped h-50">
                     <td> 
                         <!-- Delete Btn-->
-                    <div class="d-flex justify-content-end">
-                    <button class="btn btn-outline-danger btn-sm h2"> X </button> 
-                </div>
-
+                    <form action="deleteQues.php" method="post">
+                        <div class="d-flex justify-content-end">
+                            <input type="hidden" name="id" value="<?=$question['id']; ?>">
+                            <input type="submit" value="X" class="btn btn-outline-danger btn-sm h2">
+                        </div>
+                    </form>
                 </div>
                     <!-- Quest Title-->
                     <h2 class="h2"><?=htmlspecialchars($question['quesTitle'], ENT_QUOTES, 'UTF-8') ?></h2>
@@ -86,7 +88,7 @@
     };
         // Sign out
         document.getElementById("signOut").onclick = function() {
-        window.location.href = "../login/signOut.php";
+        window.location.href = "login/signOut.php";
         };
     </script>
 </body>
