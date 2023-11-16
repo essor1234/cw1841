@@ -218,3 +218,15 @@ function save($pdo, $table, $primaryKey, $record) {
         update($pdo, $table, $primaryKey, $record);
     }
 }
+
+// function showUserQuest($questions, $userid) {
+//     $userQuest = [];
+//      foreach($questions as $question) {
+//         echo $questions['userid'];
+//         echo $userid;
+//         if($question['userid'] == $userid) {
+//         $userQuest[] = $question;
+//      }
+//     }
+//     return $userQuest;
+// }

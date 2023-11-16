@@ -1,4 +1,5 @@
 <?php
+session_start();
 try{
     include("includes/DatabaseConnection.php");
     include("includes/DatabaseFunction.php");
@@ -13,6 +14,7 @@ try{
         if (is_array($user)) {
             $questions[] = [
                 'id'=>$question['id'],
+                'userid'=>$question['userid'],
                 'quesTitle'=>$question['quesTitle'],
                 'quesText'=>$question['quesText'],
                 'quesDate'=>$question['quesDate'],
@@ -22,15 +24,29 @@ try{
             ];
         }
     }
-       
 
+    $userId = $_SESSION['user']; 
 
+    if(isset($_GET['page']) == 'account') {
+        foreach($questions as $question) {
+            if($question['userid'] == $userId) {
+            $userQuest[] = $question;
+         }
+        }
+        // Start buffer
+        ob_start();
+        include 'templates/account.html.php';
+        $output = ob_get_clean();
+    }else{
         $totalQuest = total($pdo, 'questions');
-
-         // Start buffer
+        // Start buffer
         ob_start();
         include 'templates/home.html.php';
         $output = ob_get_clean();
+    }
+
+
+        
 
 }catch(PDOException $e){
     echo 'An error has occurred';

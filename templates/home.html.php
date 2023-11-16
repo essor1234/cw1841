@@ -13,6 +13,7 @@
   
                 <!-- QuestionComponent.html -->
     <div style="display: flex; justify-content: center;" class="container ">
+    <!-- table start here-->
         <table class="table table-hover text-break " >
 
         

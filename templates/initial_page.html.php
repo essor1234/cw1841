@@ -52,11 +52,11 @@
 <script>
     // Sign in
     document.getElementById("signIn").onclick = function() {
-  window.location.href = "../templates/sign_in.html.php";
+  window.location.href = "templates/sign_in.html.php";
 };
     // sign up
     document.getElementById("signUp").onclick = function() {
-  window.location.href = "../templates/sign_up.html.php";
+  window.location.href = "templates/sign_up.html.php";
 };
 </script>
 </html>

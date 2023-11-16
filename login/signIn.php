@@ -12,7 +12,7 @@ try {
         $user = signIn($pdo, $username, $password);
         if ($user) {
             $_SESSION['user'] = $user['id'];
-            header("location: ../templates/home.html.php");
+            header("location: ../quesDisplay.php");
         } else {
             echo "
 				<script>alert('Invalid username or password')</script>
