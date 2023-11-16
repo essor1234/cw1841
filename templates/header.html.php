@@ -10,7 +10,7 @@
           <a class="nav-link active" aria-current="page" href="quesDisplay.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="edit_add_quest.html.php">Add Question</a>
+          <a class="nav-link" href="editQues.php">Add Question</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="quesDisplay.php?page=account">My Account</a>

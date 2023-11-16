@@ -1,5 +1,5 @@
 <?php
-session_start();
+    session_start();
 try{
     include("includes/DatabaseConnection.php");
     include("includes/DatabaseFunction.php");
@@ -25,7 +25,10 @@ try{
         }
     }
 
-    $userId = $_SESSION['user']; 
+    $userId = $_SESSION['user'];
+    $userName = $_SESSION['name'];
+
+
 
     if(isset($_GET['page']) == 'account') {
         foreach($questions as $question) {
@@ -44,9 +47,6 @@ try{
         include 'templates/home.html.php';
         $output = ob_get_clean();
     }
-
-
-        
 
 }catch(PDOException $e){
     echo 'An error has occurred';

@@ -4,7 +4,7 @@
     <main>
         <div class="p-5 bg-light">
             <div class="container">
-                <h1 class="display-4">Welcome to My Website</h1>
+                <h1 class="display-4">Welcome <i><?=$userName?></i> to My Website</h1>
                 <p class="lead">The Biggest Forum Over The Multiverse</p>
             </div>
         </div>

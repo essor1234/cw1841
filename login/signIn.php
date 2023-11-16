@@ -11,6 +11,7 @@ try {
         
         $user = signIn($pdo, $username, $password);
         if ($user) {
+            $_SESSION['name'] = $user['userName'];
             $_SESSION['user'] = $user['id'];
             header("location: ../quesDisplay.php");
         } else {

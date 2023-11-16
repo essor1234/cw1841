@@ -5,7 +5,7 @@
     <div class="user-profile mt-5 ms-2 d-flex justify-content-between">
 
         <div>
-        <h2 class="username">John Doe</h2>
+        <h2 class="username"><?=$userName?></h2>
         </div>
 
         <div>
