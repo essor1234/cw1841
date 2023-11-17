@@ -23,6 +23,7 @@
             
             <div class="form-group mt-4">
                 <label for="tags" class="h2">Choose tags</label>
+                
                 <select class="form-control" id="tags" name="tags">
 
                 <?php if(isset($_POST['tags'])): 

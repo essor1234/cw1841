@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'includes/DatabaseConnection.php';
 include 'includes/DatabaseFunction.php';
 
@@ -6,11 +7,10 @@ try {
     if (isset($_POST['questions'])) {
         $question = $_POST['questions'];
         $question['quesDate'] = new DateTime();
-        $question['userid'] = 5;
-        $question['moduleid'] = 1;
+        $question['userid'] = $_SESSION['user'];
+        $question['moduleid'] = $_POST['tags'];
         
-        echo 'here';
-
+        
         // function gonna check to update or add in
         save($pdo, 'questions','id', $question);
         header('location: quesDisplay.php');
