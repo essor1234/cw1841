@@ -12,9 +12,8 @@
 
             <div class="form-group mt-4">
                 <label for="detail" class="h2">Details</label>
-                <textarea class="form-control"  name="questions[quesText]" id="detail" rows="10" placeholder="Give more details for the question">
-                    <?=$questions['quesText'] ?? ''; ?>
-                </textarea>
+                <textarea class="form-control"  name="questions[quesText]" 
+                id="detail" rows="10" placeholder="Give more details for the question"><?=$questions['quesText'] ?? ''; ?></textarea>
             </div>
             
             <div class="form-group mt-4">
@@ -24,14 +23,31 @@
             
             <div class="form-group mt-4">
                 <label for="tags" class="h2">Choose tags</label>
-                <select class="form-control" id="tags">
-                    <option value="">Choose a Tag For your Question</option>
-                    <option value="">Business</option>
-                    <option value="">Engineering</option>
-                    <option value="">Computer Science</option>
-                    <option value="">Finance</option>
-                    <option value="">Management</option>
-                    <option value="">Medicine</option>
+                <select class="form-control" id="tags" name="tags">
+
+                <?php if(isset($_POST['tags'])): 
+                    $seleted_tag = $_POST['tags'];?>
+                <?php else: 
+                    echo '<option value="">Choose a Tag For your Question</option>'; ?>
+                <?php endif;?>
+                
+                <!-- Start foreach -->
+                <?php foreach($modules as $module): ?>
+                    
+                    <?php if(isset($_POST['tags'])): ?>
+                        <?php if ($module['id'] != $seleted_tag): ?>
+                            <option value="<?= htmlspecialchars($module['id'], ENT_QUOTES) ?>">
+                                <?= htmlspecialchars($module['userName'], ENT_QUOTES)?></option>
+                        <?php endif;?>
+                    <?php else: ?>
+                        <option value="<?= htmlspecialchars($module['id'], ENT_QUOTES) ?>">
+                            <?= htmlspecialchars($module['moduleName'], ENT_QUOTES)?></option>
+
+                        
+                    <?php endif ;?>
+                <?php endforeach;?>
+
+                        
                 </select>
             </div>
             

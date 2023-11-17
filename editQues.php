@@ -5,10 +5,13 @@ include 'includes/DatabaseFunction.php';
 try {
     if (isset($_POST['questions'])) {
         $question = $_POST['questions'];
-        $question['quesDate'] = new DateTime;
+        $question['quesDate'] = new DateTime();
         $question['userid'] = 5;
         $question['moduleid'] = 1;
+        
+        echo 'here';
 
+        // function gonna check to update or add in
         save($pdo, 'questions','id', $question);
         header('location: quesDisplay.php');
 
@@ -16,7 +19,8 @@ try {
         if (isset($_GET['id'])) {
             $question = findById($pdo, 'questions', 'id', $_GET['id']);
             }
-    
+        $modules = findAll($pdo, 'modules');
+
        
         ob_start();
         include 'templates\edit_add_quest.html.php';

@@ -58,10 +58,11 @@
                     <span class="question__author"><?=htmlspecialchars($question['userName'], ENT_QUOTES, 'UTF-8') ?></span></a></p>
                     
                     <!-- Edit Btn-->
-                    <div class="d-flex justify-content-end"> 
+                    <div class="d-flex justify-content-end">
+                    <a href="editQues.php?id=<?=$question['id']?>">
                         <button class="btn btn-primary btn-sm">
-                        <i class="fas fa-edit"></i> Edit
-                        </button>
+                        Edit
+                        </button></a>
                     </div>
                     </td>
                 </tr>

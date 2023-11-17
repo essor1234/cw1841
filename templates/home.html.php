@@ -41,7 +41,7 @@
                     <!-- Action buttons (like upvote, downvote, comment) go here -->
                 </div>
                 <!-- date and username-->
-                <p class="text-muted text-end">Asked on <span class="text-primary"><?php $date = $date = new DateTime($question['quesDate']); 
+                <p class="text-muted text-end">Asked on <span class="text-primary"><?php $date = new DateTime($question['quesDate']); 
                                                                                             echo $date->format('jS F Y')?></span> 
                 by <a class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" 
                         href="mailto:<?=htmlspecialchars($question['email'], ENT_QUOTES, 'UTF-8') ?>">
