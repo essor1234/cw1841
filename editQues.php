@@ -18,6 +18,8 @@ try {
     }else {
         if (isset($_GET['id'])) {
             $question = findById($pdo, 'questions', 'id', $_GET['id']);
+            $existingTagId = $question['moduleid'];
+
             }
         $modules = findAll($pdo, 'modules');
 

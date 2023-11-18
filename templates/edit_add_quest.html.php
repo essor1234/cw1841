@@ -7,13 +7,13 @@
             <input type="hidden" name="questions[id]" value="<?=$question['id'] ?? '' ?>" >
             <div class="form-group mt-4">
                 <label for="title" class="h2">Title</label>
-                <input type="text" class="form-control" id="title" name="questions[quesTitle]" placeholder="Type a title">
+                <input type="text" class="form-control" id="title" name="questions[quesTitle]" placeholder="Type a title" value="<?=$question['quesTitle'] ?? ''?>">
             </div>
 
             <div class="form-group mt-4">
                 <label for="detail" class="h2">Details</label>
                 <textarea class="form-control"  name="questions[quesText]" 
-                id="detail" rows="10" placeholder="Give more details for the question"><?=$questions['quesText'] ?? ''; ?></textarea>
+                id="detail" rows="10" placeholder="Give more details for the question"><?=$question['quesText'] ?? ''; ?></textarea>
             </div>
             
             <div class="form-group mt-4">
@@ -22,31 +22,55 @@
             </div>
             
             <div class="form-group mt-4">
+            <!-- Check if editing existing question -->
+                <?php
+                $selectedModule = null;
+                if (isset($existingTagId)){
+                foreach ($modules as $module) {
+                if ($module['id'] == $existingTagId) {
+                    $selectedModule = $module;
+                    break; 
+                }
+                }
+                    }
+                ?>
+
+
                 <label for="tags" class="h2">Choose tags</label>
                 
                 <select class="form-control" id="tags" name="tags">
 
-                <?php if(isset($_POST['tags'])): 
-                    $seleted_tag = $_POST['tags'];?>
-                <?php else: 
-                    echo '<option value="">Choose a Tag For your Question</option>'; ?>
-                <?php endif;?>
-                
-                <!-- Start foreach -->
-                <?php foreach($modules as $module): ?>
-                    
-                    <?php if(isset($_POST['tags'])): ?>
-                        <?php if ($module['id'] != $seleted_tag): ?>
-                            <option value="<?= htmlspecialchars($module['id'], ENT_QUOTES) ?>">
-                                <?= htmlspecialchars($module['userName'], ENT_QUOTES)?></option>
-                        <?php endif;?>
-                    <?php else: ?>
-                        <option value="<?= htmlspecialchars($module['id'], ENT_QUOTES) ?>">
-                            <?= htmlspecialchars($module['moduleName'], ENT_QUOTES)?></option>
+                <!-- Show default option only if new question -->
+                <?php 
+                if (!isset($existingTagId)) {
+                    echo '<option value="">Choose a Tag For your Question</option>';
+                  }
+                ?>
 
-                        
-                    <?php endif ;?>
-                <?php endforeach;?>
+                <!-- Output selected tag option first if editing -->
+                <?php if ($selectedModule): ?>
+
+                <option value="<?=$selectedModule['id']?>" selected>
+                <?=$selectedModule['moduleName']?>
+                </option>
+                <?php endif;?>
+
+                 <!-- Output rest of options -->
+                <?php foreach ($modules as $module): ?>
+                    <!-- incase of have tag-->
+                    <?php if ($selectedModule && $module != $selectedModule): ?>
+                        <option value="<?=$module['id']?>">
+                        <?=$module['moduleName']?>
+                        </option>
+                    <!-- in case of not have tag-->
+                    <?php else: ?>
+                        <option value="<?=$module['id']?>">
+                        <?=$module['moduleName']?>
+                        </option>                 
+                     <?php endif; ?>
+                    
+                    <?php endforeach;?>
+
 
                         
                 </select>
