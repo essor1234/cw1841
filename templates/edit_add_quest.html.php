@@ -57,19 +57,17 @@
 
                  <!-- Output rest of options -->
                 <?php foreach ($modules as $module): ?>
-                    <!-- incase of have tag-->
-                    <?php if ($selectedModule && $module != $selectedModule): ?>
-                        <option value="<?=$module['id']?>">
-                        <?=$module['moduleName']?>
-                        </option>
-                    <!-- in case of not have tag-->
-                    <?php else: ?>
-                        <option value="<?=$module['id']?>">
-                        <?=$module['moduleName']?>
-                        </option>                 
-                     <?php endif; ?>
-                    
-                    <?php endforeach;?>
+                    <?php 
+                    // in case of have tag
+                    if ($selectedModule && $module['id'] == $selectedModule['id']) {
+                        // Skip this iteration if the module is the selected module
+                        continue; 
+                    }
+                    ?>
+                    <option value="<?=$module['id']?>">
+                    <?=$module['moduleName']?>
+                    </option>                 
+                <?php endforeach;?>
 
 
                         

@@ -1,10 +1,8 @@
-$sql = "INSERT INTO `user`(`username`, `email`, `password`, `createDate`)
-                    VALUES( '$username', '$email', '$password', '$createDate')";
-
-                    $email = $_POST['email'];
-        $username = $_POST['username'];
-        // md5 encrypted
-        $password = md5($_POST['password']);
-        $createDate = new DateTime();
-        $createDate->format('Y-m-d'); 
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+<?php if(isset($_POST['tags'])): ?>
+    <?php if ($module['id'] != $seleted_tag): ?>
+                            <option value="<?= htmlspecialchars($module['id'], ENT_QUOTES) ?>">
+                                <?= htmlspecialchars($module['userName'], ENT_QUOTES)?></option>
+                        <?php endif;?>
+                    <?php else: ?>
+                        <option value="<?= htmlspecialchars($module['id'], ENT_QUOTES) ?>">
+                            <?= htmlspecialchars($module['moduleName'], ENT_QUOTES)?></option>

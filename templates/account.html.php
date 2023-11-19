@@ -39,7 +39,10 @@
                     </form>
                 </div>
                     <!-- Quest Title-->
-                    <h2 class="h2"><?=htmlspecialchars($question['quesTitle'], ENT_QUOTES, 'UTF-8') ?></h2>
+                    <a href="quesDisplay.php?id=<?=$question['id']?>" 
+                class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover link-dark link-opacity-75-hover" >
+                <h2 class="h2"><?=htmlspecialchars($question['quesTitle'], ENT_QUOTES, 'UTF-8') ?></h2></a>
+
                     <!-- Quest Text-->
                     <p><?=htmlspecialchars($question['quesText'], ENT_QUOTES, 'UTF-8') ?></p>
                     <!-- Quest Tag-->

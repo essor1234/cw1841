@@ -5,7 +5,6 @@ try{
     include("includes/DatabaseFunction.php");
     
     $result = findAll($pdo, 'questions');
-    $shit = 'shit';
     $questions = [];
     foreach($result as $question){
         $user = findById($pdo, 'users', 'id', $question['userid']);
@@ -29,8 +28,8 @@ try{
     $userName = $_SESSION['name'];
 
 
-
-    if(isset($_GET['page']) == 'account') {
+    // display question from owner only
+    if(isset($_GET['page'])) {
         foreach($questions as $question) {
             if($question['userid'] == $userId) {
             $userQuest[] = $question;
@@ -40,7 +39,19 @@ try{
         ob_start();
         include 'templates/account.html.php';
         $output = ob_get_clean();
-    }else{
+    }elseif ((isset($_GET['id']))) {
+        foreach($questions as $question){
+            if($question['id'] == $_GET['id']){
+                // Start buffer
+                ob_start();
+                include 'templates\question_info.html.php';
+                $output = ob_get_clean();
+            }
+        }
+        
+
+    }
+    else{
         $totalQuest = total($pdo, 'questions');
         // Start buffer
         ob_start();
