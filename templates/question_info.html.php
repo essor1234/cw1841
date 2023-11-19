@@ -11,9 +11,9 @@
                 <!-- question owner name -->
                 <h5 class="card-text"><a class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" 
                         href="mailto:<?=htmlspecialchars($question['email'], ENT_QUOTES, 'UTF-8') ?>">
-                <span class="question__author"><?=htmlspecialchars($question['userName'], ENT_QUOTES, 'UTF-8') ?></span></a></h5>
+                <span class="question__author"><?=htmlspecialchars($question['nickname'], ENT_QUOTES, 'UTF-8') ?></span></a></h5>
                 <!-- question Text is here-->
-                <h2><?=htmlspecialchars($question['quesText'], ENT_QUOTES, 'UTF-8') ?></h2>
+                <p><?=htmlspecialchars($question['quesText'], ENT_QUOTES, 'UTF-8') ?></p>
                 <!-- question tag -->
                 <button type="button" class="btn btn-outline-secondary"><?=htmlspecialchars($question['moduleName'], ENT_QUOTES, 'UTF-8') ?></button>
             </div>

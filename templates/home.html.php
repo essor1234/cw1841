@@ -31,8 +31,7 @@
                 <!-- Quest Title-->
                 <a href="quesDisplay.php?id=<?=$question['id']?>" 
                 class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover link-dark link-opacity-75-hover" >
-    <h2 class="h2"><?=htmlspecialchars($question['quesTitle'], ENT_QUOTES, 'UTF-8') ?></h2>
-</a>
+                <h2 class="h2"><?=htmlspecialchars($question['quesTitle'], ENT_QUOTES, 'UTF-8') ?></h2></a>
 
 
                 <!-- Quest Text-->
@@ -50,7 +49,7 @@
                                                                                             echo $date->format('jS F Y')?></span> 
                 by <a class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" 
                         href="mailto:<?=htmlspecialchars($question['email'], ENT_QUOTES, 'UTF-8') ?>">
-                <span class="question__author"><?=htmlspecialchars($question['userName'], ENT_QUOTES, 'UTF-8') ?></span></a></p>
+                <span class="question__author"><?=htmlspecialchars($question['nickname'], ENT_QUOTES, 'UTF-8') ?></span></a></p>
                 </td>
             </tr>
             </tbody>

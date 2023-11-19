@@ -2,19 +2,19 @@
     <div class="space-100 ">&nbsp;</div>
 
     <main>
-    <div class="user-profile mt-5 ms-2 d-flex justify-content-between">
+    <div class="user-profile mt-5 ms-2 d-flex justify-content-between ms-3 text-uppercase">
 
         <div>
-        <h2 class="username"><?=$userName?></h2>
+        <h2 class="nickname"><?=$userName?></h2>
         </div>
 
         <div>
-        <button class="btn btn-outline-danger" id="signOut">Sign Out</button>
+        <button class="btn btn-outline-danger me-3" id="signOut">Sign Out</button>
         </div>
 
     </div>
 
-    <button class="btn btn-outline-dark" id="infoEdit">Edit Info</button>
+    <button class="btn btn-outline-dark ms-3" id="infoEdit">Edit Info</button>
 
   <div class="user-questions mt-5 ms-1">
 
@@ -23,8 +23,9 @@
     <!-- table start here-->
     <table class="table table-hover text-break " >
 
-            <!-- Start here-->          
-            <?php if (count($userQuest) > 0): ?>
+            <!-- Start here--> 
+                    
+            <?php if (isset($userQuest) && count($userQuest) > 0): ?>
                 <?php foreach($userQuest as $question): ?>
                 <tbody>
 
@@ -58,7 +59,7 @@
                                                                                                 echo $date->format('jS F Y')?></span> 
                     by <a class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" 
                             href="mailto:<?=htmlspecialchars($question['email'], ENT_QUOTES, 'UTF-8') ?>">
-                    <span class="question__author"><?=htmlspecialchars($question['userName'], ENT_QUOTES, 'UTF-8') ?></span></a></p>
+                    <span class="question__author"><?=htmlspecialchars($question['nickname'], ENT_QUOTES, 'UTF-8') ?></span></a></p>
                     
                     <!-- Edit Btn-->
                     <div class="d-flex justify-content-end">

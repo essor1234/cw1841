@@ -17,7 +17,7 @@ try{
                 'quesTitle'=>$question['quesTitle'],
                 'quesText'=>$question['quesText'],
                 'quesDate'=>$question['quesDate'],
-                'userName'=>$user['userName'],
+                'nickname'=>$user['nickname'],
                 'email'=>$user['email'],
                 'moduleName'=>$module['moduleName'],
             ];

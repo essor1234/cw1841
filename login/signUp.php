@@ -5,11 +5,12 @@
     include("../includes/DatabaseFunction.php");
     try {
         if(isset($_POST['signUp'])){
-            if($_POST['email'] != "" && $_POST['username'] != "" && $_POST['password'] != "" && $_POST['repassword'] != ""){
+            if($_POST['email'] != "" && $_POST['username'] != "" && $_POST['password'] != "" && $_POST['nickname'] != ""){
                 
             // Sanitize input
             $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
             $username = htmlspecialchars($_POST['username'], ENT_QUOTES);
+            $nickname = htmlspecialchars($_POST['nickname'], ENT_QUOTES);
 
             // Hash password
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -24,6 +25,7 @@
                 'email' => $email,
                 'username' => $username,
                 'password' => $password,
+                'nickname' => $nickname,
                 'createDate' => $createDate
             ];
 

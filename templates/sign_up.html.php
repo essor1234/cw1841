@@ -27,14 +27,16 @@
   </div>
 
   <div class="form-floating mb-3">
+    <input type="text" class="form-control" id="nickname" name="nickname" placeholder="Your Nickname">
+    <label for="repassword">What can we call you</label>
+  </div>
+
+  <div class="form-floating mb-3">
     <input type="password" class="form-control" id="password" name="password" placeholder="Password">
     <label for="password">Password</label>
   </div>
 
-  <div class="form-floating mb-3">
-    <input type="password" class="form-control" id="repassword" name="repassword" placeholder="Retype Password">
-    <label for="repassword">Re-type Password</label>
-  </div>
+  
 
   <button class="btn btn-primary w-100 mb-3" name="signUp">Sign Up</button>
 

@@ -149,19 +149,16 @@ function insert($pdo, $table, $fields) {
 
 
 function update($pdo, $table, $primaryKey, $fields) {
-    $query = 'UPDATE `' . $table . '` SET ';
-
-    foreach ($fields as $key => $value) {
-        $query .= '`' . $key . '` = :' . $key . ',';
-    }
-
-    $query = rtrim($query, ',');
-    $query .= 'WHERE `' . $primaryKey . '` = :primaryKey';
-
-    // setr the :primaryKey variable
-    $fields['primaryKey'] = $fields['id'];
-    $fields = processDates($fields);
-    query($pdo, $query, $fields );
+ $query = ' UPDATE `' . $table .'` SET ';
+ foreach ($fields as $key => $value) {
+ $query .= '`' . $key . '` = :' . $key . ',';
+ }
+ $query = rtrim($query, ',');
+ $query .= ' WHERE `' . $primaryKey . '` = :primaryKey';
+ // Set the :primaryKey variable
+ $fields['primaryKey'] = $fields['id'];
+ $fields = processDates($fields);
+ query($pdo, $query, $fields);
 }
 
 
@@ -208,17 +205,32 @@ function signIn($pdo, $username, $password) {
 
 
 
+// function save($pdo, $table, $primaryKey, $record) {
+//     try {
+//         if ($record[$primaryKey]) {
+//             $record[$primaryKey] = null;
+//         }
+//         insert($pdo, $table, $record);
+//     }catch (PDOException $e) {
+//         update($pdo, $table, $primaryKey, $record);
+//     }
+// }
+
 function save($pdo, $table, $primaryKey, $record) {
     try {
-        if ($record[$primaryKey]) {
-            $record[$primaryKey] = null;
+        if ($record[$primaryKey] == '') {
+            insert($pdo, $table, $record);
+        } else {
+            update($pdo, $table, $primaryKey, $record);
         }
-        insert($pdo, $table, $record);
-    }catch (PDOException $e) {
-        update($pdo, $table, $primaryKey, $record);
+    } catch (PDOException $e) {
+        throw $e;
     }
 }
-
+    
+//     }
+  
+//   }
 // function showUserQuest($questions, $userid) {
 //     $userQuest = [];
 //      foreach($questions as $question) {
