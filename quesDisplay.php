@@ -39,6 +39,8 @@ try{
         ob_start();
         include 'templates/account.html.php';
         $output = ob_get_clean();
+        
+    // display more information in for the question
     }elseif ((isset($_GET['id']))) {
         foreach($questions as $question){
             if($question['id'] == $_GET['id']){
@@ -51,6 +53,7 @@ try{
         
 
     }
+    // display all question
     else{
         $totalQuest = total($pdo, 'questions');
         // Start buffer

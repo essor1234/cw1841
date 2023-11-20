@@ -95,6 +95,10 @@
         document.getElementById("signOut").onclick = function() {
         window.location.href = "login/signOut.php";
         };
+        // edit info
+        document.getElementById("infoEdit").onclick = function() {
+        window.location.href = "editUser.php?id=<?=$question['id']?>";
+        };
     </script>
 </body>
 
