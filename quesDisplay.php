@@ -26,6 +26,8 @@ try{
 
     $userId = $_SESSION['user'];
     $userName = $_SESSION['name'];
+    $createdDate = $_SESSION['date'];
+
 
 
     // display question from owner only
@@ -35,6 +37,7 @@ try{
             $userQuest[] = $question;
          }
         }
+
         // Start buffer
         ob_start();
         include 'templates/account.html.php';

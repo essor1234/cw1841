@@ -3,17 +3,26 @@
 
     <main>
     <div class="user-profile mt-5 ms-2 d-flex justify-content-between ms-3 text-uppercase">
-
+        <!-- nickname display -->
         <div>
         <h2 class="nickname"><?=$userName?></h2>
         </div>
-
+        <!-- date create -->
+        
+        <!-- sign out btn  -->
         <div>
         <button class="btn btn-outline-danger me-3" id="signOut">Sign Out</button>
         </div>
-
+    
     </div>
-
+    <div class="ms-3">
+        Participate on 
+        <mark><i>
+        <?php
+        $createdDate = new DateTime($createdDate);
+        echo $createdDate->format('jS F Y'); 
+        ?></i></mark>
+    </div>
     <button class="btn btn-outline-dark ms-3" id="infoEdit">Edit Info</button>
 
   <div class="user-questions mt-5 ms-1">

@@ -13,8 +13,7 @@ try {
         if ($user) {
             $_SESSION['name'] = $user['nickname'];
             $_SESSION['user'] = $user['id'];
-            $_SESSION['date'] = $user['createdate'];
-            $_SESSION['email'] = $user['email'];
+            $_SESSION['date'] = $user['createDate'];
             header("location: ../quesDisplay.php");
         } else {
             echo "
