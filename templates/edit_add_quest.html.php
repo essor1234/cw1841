@@ -3,7 +3,7 @@
    
     <main class="container mt-5">
         <div class="card p-4">
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="editQues.php" method="post" enctype="multipart/form-data">
                 <!-- get id -->
                 <input type="hidden" name="questions[id]" value="<?=$question['id'] ?? '' ?>" >
                 <!-- get title  -->
@@ -18,10 +18,22 @@
                     id="detail" rows="10" placeholder="Give more details for the question"><?=$question['quesText'] ?? ''; ?></textarea>
                 </div>
                 <!-- get image -->
-                <div class="form-group mt-4">
+                <!-- <div class="form-group mt-4">
                     <label for="image" class="h2">Upload Image</label> </br>
                     <input type="file" class="form-control-file " name="fileToUpload" id="fileToUpload">
+                </div> -->
+                <div class="form-group mt-4">
+                    <label for="image" class="h2">Upload Image</label> </br>
+
+                    <!-- Display the current image -->
+                    <?php if (!empty($question['image'])): ?>
+                    <img src="uploads/<?=htmlspecialchars($question['image'], ENT_QUOTES); ?>" height="200px" />
+                    <p>Current image</p>
+                    <?php endif; ?>
+
+                    <input type="file" class="form-control-file " name="fileToUpload" id="fileToUpload">
                 </div>
+
                 
                 <div class="form-group mt-4">
                 <!-- Check if editing existing question -->

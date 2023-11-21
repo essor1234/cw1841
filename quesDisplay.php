@@ -20,6 +20,7 @@ try{
                 'nickname'=>$user['nickname'],
                 'email'=>$user['email'],
                 'moduleName'=>$module['moduleName'],
+                'image' =>$question['image']
             ];
         }
     }

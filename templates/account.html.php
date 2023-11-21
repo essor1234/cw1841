@@ -54,7 +54,9 @@
                 <h2 class="h2"><?=htmlspecialchars($question['quesTitle'], ENT_QUOTES, 'UTF-8') ?></h2></a>
 
                     <!-- Quest Text-->
-                    <p><?=htmlspecialchars($question['quesText'], ENT_QUOTES, 'UTF-8') ?></p>
+                    <p><?php $questionText = $question['quesText'];
+                        $limitedText = implode(" ", array_slice(explode(" ", $questionText), 0, 45)); 
+                    echo htmlspecialchars($limitedText, ENT_QUOTES, 'UTF-8') ?></p>
                     <!-- Quest Tag-->
                     <div class="question__tags">
                         <button type="button" class="btn btn-outline-secondary"><?=htmlspecialchars($question['moduleName'], ENT_QUOTES, 'UTF-8') ?></button>
