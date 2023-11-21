@@ -3,22 +3,24 @@
    
     <main class="container mt-5">
         <div class="card p-4">
-            <form action="" method="post">
+            <form action="" method="post" enctype="multipart/form-data">
+                <!-- get id -->
                 <input type="hidden" name="questions[id]" value="<?=$question['id'] ?? '' ?>" >
+                <!-- get title  -->
                 <div class="form-group mt-4">
                     <label for="title" class="h2">Title</label>
                     <input type="text" class="form-control" id="title" name="questions[quesTitle]" placeholder="Type a title" value="<?=$question['quesTitle'] ?? ''?>">
                 </div>
-
+                    <!-- get detail   -->
                 <div class="form-group mt-4">
                     <label for="detail" class="h2">Details</label>
                     <textarea class="form-control"  name="questions[quesText]" 
                     id="detail" rows="10" placeholder="Give more details for the question"><?=$question['quesText'] ?? ''; ?></textarea>
                 </div>
-                
+                <!-- get image -->
                 <div class="form-group mt-4">
                     <label for="image" class="h2">Upload Image</label> </br>
-                    <input type="file" class="form-control-file" id="image">
+                    <input type="file" class="form-control-file " name="fileToUpload" id="fileToUpload">
                 </div>
                 
                 <div class="form-group mt-4">
