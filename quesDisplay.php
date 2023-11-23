@@ -4,7 +4,7 @@ try{
     include("includes/DatabaseConnection.php");
     include("includes/DatabaseFunction.php");
     
-    $result = findAll($pdo, 'questions');
+    $result = findAll($pdo, 'questions', 'quesDate');
     $questions = [];
     foreach($result as $question){
         $user = findById($pdo, 'users', 'id', $question['userid']);

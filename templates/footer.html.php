@@ -2,10 +2,10 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <h2>Contact with Us</h2>
-      <form action="" method="post">
-        <input type="hidden" name="questions[id]"  >
+      <form action="getFeed.php" method="post">
+      <input type="hidden" name="feedback[id]" value="<?=$feedback['id'] ?? '' ?>" >
         <div class="mb-3">
-          <textarea class="form-control" rows="5" placeholder="Give your opinion here" name="feedback"></textarea>
+          <textarea class="form-control" rows="5" placeholder="Give your opinion here" name="message"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>

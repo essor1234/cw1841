@@ -18,7 +18,13 @@ try {
         // function gonna check to update or add in
         save($pdo, 'questions','id', $question);
         include 'includes/updateFile.php';
-        header('location: quesDisplay.php');
+        if ($question['id'] == '') {
+            header('location: quesDisplay.php');
+
+        } else {
+            header('location: quesDisplay.php?page=account');
+
+        }
 
     }else {
 

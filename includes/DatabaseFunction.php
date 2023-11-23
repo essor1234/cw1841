@@ -116,8 +116,14 @@ function insertAuthor($pdo, $fields) {
     query($pdo, $query, $fields);
 }
 
-function findAll($pdo, $table) {
-    $result = query($pdo, 'SELECT * FROM `' . $table . '`');
+function findAll($pdo, $table, $orderBy=null) {
+    if (!isset($orderBy)){
+        $result = query($pdo, 'SELECT * FROM `' . $table . '`');
+        
+    }else {
+        $result = query($pdo, 'SELECT * FROM `' . $table . '`'. ' ORDER BY '. $orderBy . ' DESC');
+    }
+    
 
     return $result->fetchAll();
 }
