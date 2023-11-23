@@ -12,12 +12,13 @@ try {
         $question['userid'] = $_SESSION['user'];
         $question['moduleid'] = $_POST['tags'];
         $question['image'] = $_FILES['fileToUpload']['name'];
+
         
         
         // function gonna check to update or add in
         save($pdo, 'questions','id', $question);
         include 'includes/updateFile.php';
-        header('location: quesDisplay.php');
+        // header('location: quesDisplay.php');
 
     }else {
 
