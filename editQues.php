@@ -8,7 +8,7 @@ include 'includes/DatabaseFunction.php';
 try {
     if (isset($_POST['questions'])) {
         $question = $_POST['questions'];
-        $question['quesDate'] = new DateTime();
+        $question['quesDate'] = (new DateTime())->format('Y-m-d H:i:s');
         $question['userid'] = $_SESSION['user'];
         $question['moduleid'] = $_POST['tags'];
         $question['image'] = $_FILES['fileToUpload']['name'];
@@ -17,7 +17,9 @@ try {
         
         // function gonna check to update or add in
         save($pdo, 'questions','id', $question);
-        include 'includes/updateFile.php';
+        if(!empty($question['image'])){
+            include 'includes/updateFile.php';
+        }
         if ($question['id'] == '') {
             header('location: quesDisplay.php');
 

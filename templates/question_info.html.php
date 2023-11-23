@@ -15,7 +15,7 @@
                 <!-- question Text is here-->
                 <p><?=htmlspecialchars($question['quesText'], ENT_QUOTES, 'UTF-8') ?></p>
                 <!-- question image is here-->
-                <?php if(isset($question['image'])): ?>
+                <?php if(!empty($question['image'])): ?>
                 <img height="200px" src="uploads\<?=htmlspecialchars($question['image'], ENT_QUOTES); ?>" alt="question image" class="img-thumbnail"/>
                 <?php endif; ?>
                 <div class="space-50 ">&nbsp;</div>
