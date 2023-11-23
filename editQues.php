@@ -18,7 +18,7 @@ try {
         // function gonna check to update or add in
         save($pdo, 'questions','id', $question);
         include 'includes/updateFile.php';
-        // header('location: quesDisplay.php');
+        header('location: quesDisplay.php');
 
     }else {
 

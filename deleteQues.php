@@ -3,6 +3,10 @@
 try{
     include 'includes\DatabaseConnection.php';
     include 'includes\DatabaseFunction.php';
+
+
+    $question = findById($pdo, 'questions', 'id', $_POST['id']);
+    unlink('uploads/'. $question['image']);
     // $_POST['id'] get from name!!!!
     delete1($pdo, 'questions', 'id', $_POST['id']);
 
