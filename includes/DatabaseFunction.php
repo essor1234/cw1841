@@ -128,6 +128,8 @@ function findAll($pdo, $table, $orderBy=null) {
     return $result->fetchAll();
 }
 
+
+
 function delete1($pdo, $table, $primaryKey, $id) {
     $parameter = [':id' => $id];
 
@@ -248,3 +250,90 @@ function save($pdo, $table, $primaryKey, $record) {
 //     }
 //     return $userQuest;
 // }
+
+function findLimit($pdo, $table, $start, $num_page, $orderBy=null) {
+    if (!isset($orderBy)){
+    $result = query($pdo, 'SELECT * FROM `' . $table . '` LIMIT '
+                    . $start . ', ' . $num_page);
+    }else {
+    $result = query($pdo, 'SELECT * FROM `' . $table . '` ORDER BY ' . $orderBy .  ' DESC LIMIT '
+        . $start . ', ' . $num_page);
+    }
+return $result->fetchAll();
+}
+
+// function findLimit($pdo, $table, $offset, $limit) {
+
+//     $sql = "SELECT q.*, m.moduleName, u.nickname 
+//               FROM $table q
+//               JOIN modules m ON q.moduleId = m.id
+//               JOIN users u ON q.userId = u.id
+//              ORDER BY q.date DESC
+//              LIMIT $offset, $limit";
+             
+//     $results = $pdo->query($sql);
+    
+//     $questions = [];
+    
+//     foreach ($results as $question) {
+//       $question['moduleName'] = $question['moduleName'] ?? '';
+//       $question['nickname'] = $question['nickname'] ?? '';
+//       $questions[] = $question;
+//     } 
+    
+//     return $questions;
+  
+//   }
+
+function getCurQuest($pdo, $userId){
+    $sql = 'SELECT 
+    questions.id AS id,
+    questions.userid AS userid,
+    questions.quesTitle AS quesTitle,
+    questions.quesText AS quesText,
+    questions.quesDate AS quesDate,
+    users.nickname AS nickname,
+    users.email AS email,
+    modules.moduleName AS moduleName,
+    questions.image AS image
+FROM 
+    questions
+JOIN 
+    users ON questions.userid = users.id
+JOIN 
+    modules ON questions.moduleid = modules.id
+WHERE 
+    questions.userid = :userId
+ORDER BY
+    questions.quesDate DESC';
+    $result = query($pdo, $sql, ['userId' => $userId]);
+    $data = $result->fetchAll();
+
+
+    return $data;
+}
+
+function getQuestionById($pdo, $id){
+     $sql = 'SELECT 
+    questions.id AS id,
+    questions.userid AS userid,
+    questions.quesTitle AS quesTitle,
+    questions.quesText AS quesText,
+    questions.quesDate AS quesDate,
+    users.nickname AS nickname,
+    users.email AS email,
+    modules.moduleName AS moduleName,
+    questions.image AS image
+FROM 
+    questions
+JOIN 
+    users ON questions.userid = users.id
+JOIN 
+    modules ON questions.moduleid = modules.id
+WHERE 
+    questions.id = :id';
+    $result = query($pdo, $sql, ['id' => $id]);
+    return $result->fetchAll();
+
+
+}

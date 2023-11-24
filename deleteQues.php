@@ -10,7 +10,7 @@ try{
     // $_POST['id'] get from name!!!!
     delete1($pdo, 'questions', 'id', $_POST['id']);
 
-    header('location: quesDisplay.php?page=account');
+    header('location: quesDisplay.php?account=acc');
 
 }catch (PDOException $e) {
     $title='An error has occured';

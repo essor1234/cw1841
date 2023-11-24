@@ -13,7 +13,7 @@
           <a class="nav-link" href="editQues.php">Add Question</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="quesDisplay.php?page=account">My Account</a>
+          <a class="nav-link" href="quesDisplay.php?account=acc">My Account</a>
         </li>
       </ul>
       <span class="navbar-text">

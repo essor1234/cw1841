@@ -61,7 +61,21 @@
             
             
         </table>
+        
     </div>
+    <div>
+            <!-- for pagination  -->
+            <?php 
+            echo '<nav aria-label="Page navigation example">';
+            echo '<ul class="pagination justify-content-center">';
+            
+            for($i=1;$i<=$total_pages;$i++) {
+                echo '<li class="page-item"><a class="page-link" href="quesDisplay.php?page='.$i.'">'.$i.'</a></li>';
+            }
+            
+            echo '</ul>';
+            echo '</nav>'; ?>
+        </div>
 
 
     </main>

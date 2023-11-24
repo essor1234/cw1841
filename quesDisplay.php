@@ -3,8 +3,20 @@
 try{
     include("includes/DatabaseConnection.php");
     include("includes/DatabaseFunction.php");
-    
-    $result = findAll($pdo, 'questions', 'quesDate');
+    // limit question displayed per page 
+    $num_page = 5;
+    $records = total($pdo, 'questions');
+    $total_pages = ceil($records/$num_page);
+
+    if(isset($_GET["page"])){
+        $page = intval($_GET["page"]);
+    }else{
+        $page = 1;
+    }
+
+    $start_from = max(0, ($page-1)*$num_page);
+        
+    $result = findLimit($pdo, 'questions', $start_from, $num_page, 'quesDate');
     $questions = [];
     foreach($result as $question){
         $user = findById($pdo, 'users', 'id', $question['userid']);
@@ -29,34 +41,52 @@ try{
     $userName = $_SESSION['name'];
     $createdDate = $_SESSION['date'];
 
+    
 
+   
+    
 
-    // display question from owner only
-    if(isset($_GET['page'])) {
-        foreach($questions as $question) {
-            if($question['userid'] == $userId) {
-            $userQuest[] = $question;
-         }
-        }
+   // display question from owner only
+    if(isset($_GET['account'])) {
+
+        $allUserQuest = getCurQuest($pdo, $userId);
+        // $userQuestions = [];
+        // foreach($questions as $question) {
+        //     if($question['userid'] == $userId) {
+        //         $userQuestions[] = $question;
+        //     }
+        // }
+
+        // Update total records and pages for user's questions
+        $records = count($allUserQuest);
+        $total_pages = ceil($records/$num_page);
+
+        // Apply pagination logic to user's questions
+        $userQuestions = array_slice($allUserQuest, $start_from, $num_page);
+        // foreach($userQuestions as $quest) {
+        //     $question = $quest;
+        // }
 
         // Start buffer
         ob_start();
         include 'templates/account.html.php';
         $output = ob_get_clean();
-        
+
     // display more information in for the question
     }elseif ((isset($_GET['id']))) {
-        foreach($questions as $question){
-            if($question['id'] == $_GET['id']){
-                // Start buffer
-                ob_start();
-                include 'templates\question_info.html.php';
-                $output = ob_get_clean();
-            }
+        $questions = getQuestionById($pdo, $_GET['id']);
+        foreach ($questions as $quest){
+            $question = $quest;
+
+        }
+        // Start buffer
+        ob_start();
+        include 'templates\question_info.html.php';
+        $output = ob_get_clean();
+            
         }
         
 
-    }
     // display all question
     else{
         $totalQuest = total($pdo, 'questions');

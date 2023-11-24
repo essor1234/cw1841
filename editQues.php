@@ -20,11 +20,12 @@ try {
         if(!empty($question['image'])){
             include 'includes/updateFile.php';
         }
+        
         if ($question['id'] == '') {
             header('location: quesDisplay.php');
 
         } else {
-            header('location: quesDisplay.php?page=account');
+            header('location: quesDisplay.php?account=acc');
 
         }
 
