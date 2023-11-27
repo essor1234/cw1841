@@ -44,7 +44,7 @@ try {
             
         </script>
         ";    
-      } else if (isset($_POST['password'])) {
+      } elseif (isset($_POST['password'])) {
         $users  = findById($pdo,'users', 'id', $_SESSION['user']);
         
         

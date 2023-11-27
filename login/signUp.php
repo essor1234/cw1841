@@ -29,8 +29,16 @@
                 'createDate' => $createDate
             ];
 
-            
-            insert($pdo, 'users', $signUp);
+            try {
+                insert($pdo, 'users', $signUp);
+
+            }catch(Exception){
+                echo "
+                <script>
+                    alert('This email has been used!');
+                </script>
+                ";
+            }
 
 			$_SESSION['message']=array("text"=>"User successfully created.","alert"=>"info");
             header('location: ../templates/sign_in.html.php');
