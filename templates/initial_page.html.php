@@ -47,9 +47,7 @@
     </main>
     <div class="space-100 mt-5 mb-5">&nbsp;</div>
 
-    <footer>
-        <?php include("footer.html.php"); ?>
-    </footer>
+    
 </body>
 <script>
     // Sign in
