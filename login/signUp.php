@@ -31,17 +31,28 @@
 
             try {
                 insert($pdo, 'users', $signUp);
+                echo "
+                <script>
+                    alert('Account created successfully!');
+                    setTimeout(function(){
+                        window.location.href = '../templates/sign_in.html.php';
+                    }, 500);
+                </script>
+                ";
+                // header('location: ../templates/sign_in.html.php');
 
-            }catch(Exception){
+
+            }catch(PDOException){
                 echo "
                 <script>
                     alert('This email has been used!');
+                    window.location.href = document.referrer;
+                    
                 </script>
                 ";
             }
 
-			$_SESSION['message']=array("text"=>"User successfully created.","alert"=>"info");
-            header('location: ../templates/sign_in.html.php');
+			
 
             }
         }

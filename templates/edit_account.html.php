@@ -34,14 +34,14 @@
                 <div class="form-group mt-4">
                     <label for="password" class="h2">Your current password</label>
                     <input type="text" name="password" class="form-control" id="password" 
-                        placeholder="choose an email" value="">
+                        placeholder="Type in your current password" value="">
                 </div>
 
 
                 <div class="form-group mt-4">
                     <label for="newPassword" class="h2">Your new password</label>
                     <input type="text" name="newPassword" class="form-control" id="newPassword" 
-                        placeholder="choose an email" value="">
+                        placeholder="Type your new password" value="">
                 </div>
                 
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
