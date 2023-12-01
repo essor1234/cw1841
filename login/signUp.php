@@ -45,7 +45,7 @@
             }catch(PDOException){
                 echo "
                 <script>
-                    alert('This email has been used!');
+                    alert('This email or username has been used!');
                     window.location.href = document.referrer;
                     
                 </script>

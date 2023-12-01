@@ -16,6 +16,7 @@ try {
         
         
         // function gonna check to update or add in
+        try {
         save($pdo, 'questions','id', $question);
         if(!empty($question['image'])){
             include 'includes/updateFile.php';
@@ -28,6 +29,15 @@ try {
             header('location: quesDisplay.php?account=acc');
 
         }
+    }catch(Exception){
+        echo "
+                <script>
+                    alert('Please fill in all blank!');
+                    window.location.href = document.referrer;
+                    
+                </script>
+                ";
+    }
 
     }else {
 
